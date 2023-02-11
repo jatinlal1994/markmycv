@@ -1,0 +1,47 @@
+networks:
+  app-network:
+    driver: bridge
+
+services:
+  db: # Postgres database
+    image: postgres
+    volumes:
+      - ./data/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  web: # Web server
+    build: ./web
+    command: python web/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - db
+  app: # Browser app
+    restart: always
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - SERVICE_NAME=frontend   
+      - CHOKIDAR_USEPOLLING=true    
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+  redis: # Redis server
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - app-network
