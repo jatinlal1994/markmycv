@@ -1,0 +1,115 @@
+$theme: #87D37C;
+body, p, a, ul, li{margin: 0;padding: 0;}
+p, a, li{font-family: 'Poppins', sans-serif;color: #333;}
+i, img{vertical-align: middle;}
+li{list-style-type: none;}
+.page{width: 793px;height: 1120px;margin: 0 auto;background-color: #fff;box-shadow: -2px 2px 5px 0 rgba(0,0,0,0.15);}
+.left{float: left;}
+.right{float: right;}
+.clear:after{clear: both;display: block;content: "";}
+.divider{height: 4px;width: calc(100% - 20px);margin: 0 auto;background-color: $theme;
+  &.not-first{margin-top: 10px;margin-bottom: 10px;}
+}
+.section-title{margin-bottom: 8px;font-weight: 500;}
+  #top-section{border-top: 5px solid $theme;padding: 0 10px;
+  #name{font-size: 32px;font-weight: 400;margin-bottom: -4px;color: $theme;}
+  #position{font-size: 12px;margin-left: 3px;margin-bottom: 10px;font-weight: 500;}
+  .info{text-align: left;border-left: 2px solid #333;padding-left: 7px;
+    p{font-size: 11.4px;line-height: 19px;font-weight: 500;color: #555;
+      span{font-weight: 500;display: inline-block;width: 78px;
+        i{width: 16px;text-align: center;}
+      }
+    }
+  }
+  .right{padding: 7px 0;}
+}
+#details-section{padding: 0 15px;
+  #social-links{float: left;padding: 10px 0;
+    p{font-size: 11.4px;font-weight: 400;line-height: 18px;
+      i{margin-right: 4px;font-size: 1.1em;display: inline;}
+      span{font-weight: bold;display: inline;}
+      &.social-github{}
+      &.social-linkedin{}
+      &.social-facebook{}
+      &:after{clear: both;display: block;content: "";}
+    }
+  }
+  #details-box{width: 52%;padding: 12px 0;float: right;
+    p{font-size: 11px;color: #555;font-weight: 400;font-weight: bold;word-break: break-word;
+      i{font-size: 7px;vertical-align: super;
+        &:first-child{margin-right: 2px;}
+        &:last-child{margin-left: 2px;}
+      }
+    }
+  }
+}
+#skills-section{padding: 0 15px;font-size: 15px;font-weight: 500;
+  ul{
+    li{margin-bottom: 3px;border-bottom: 1px solid #eee;padding-bottom: 2px;
+      &:after{clear: both;display: block;content: "";}
+      &:last-child{border-bottom: none;}
+    }
+    .skill-title{width: 160px;float: left;
+      p{font-weight: 500;}
+    }
+    .skill-content{width: calc(100% - 160px);float: left;
+      p{font-weight: 400;}
+    }
+    p{font-size: 11px;
+      span{display: inline-block;width: 30%;}
+    }
+  }
+}
+#languages-section{padding: 0 15px;font-size: 15px;font-weight: 500;
+  .skill{margin-bottom: 12px;}
+  #profile-pic{width: 166px;float: left;min-height: 1px;background: url('/profile.jpg');background-size: cover;height: 263px;;background-position: center center;}
+  #professional{width: calc(100% - 180px);float: left;padding-left: 15px;box-sizing: border-box;
+    .professional-string{
+      p{font-size: 11.4px;font-weight: 400;}
+    }
+  }
+  .professional-sub-title{margin-top: 5px;
+    p{font-size: 12.8px;font-weight: 500;}
+  }
+  .professional-sub-content{margin-top: 3px;
+    p{font-size: 11.4px;font-weight: 400;}
+  }
+  .skill-images{margin-top: 20px;
+    .skill-col{width: 33.33%;float: left;padding: 0 10px;box-sizing: border-box;
+      .skill-name{font-size: 11px;font-weight: bold;margin-bottom: 3px;margin-left: 4px;padding-right: 6px;
+        span{color: darken($theme, 15%);font-size: 0.9em;font-weight: 500;float: right;}
+      }
+      .skill-bar{width: 100%;height: 5px;background-color: #ddd;border-radius: 4px;overflow: hidden;margin-bottom: 8px;
+        .skill-fill{background-color: $theme;height: 100%;
+          &#english{width: 80%;}
+          &#html{width: 85%;}
+          &#scss{width: 75%;}
+          &#python{width: 80%;}
+          &#django{width: 85%;}
+          &#docker{width: 70%;}
+        }
+      }
+    }
+  }
+}
+#career-section{padding: 0 15px;font-size: 15px;font-weight: 500;
+  .career-step{padding: 0 5px;
+    span, a{font-weight: bold;}
+  }
+  .career-title{margin-bottom: 2px;font-size: 13px;
+    span{font-size: 10px;color: darken($theme, 15%);font-weight: 500;}
+  }
+  a{text-decoration: none;color: darken($theme, 20%);}
+  ul{margin-left: 20px;margin-bottom: 5px;
+    li{font-size: 11.4px;list-style-type: square;font-weight: 400;color: #555;}
+  }
+}
+#education-section{padding: 0 15px;font-size: 15px;font-weight: 500;
+  .education-col{width: 33.33%;float: left;border-right: 3px solid $theme;box-sizing: border-box;padding: 0 15px;text-align: left;
+    .course-name{font-size: 12px;color: darken($theme, 15%);font-weight: 500;}
+    .course-institute{font-size: 11.4px;font-weight: 500;}
+    .course-year{font-size: 11.4px;font-weight: 500;}
+    .course-marks{font-size: 11.4px;}
+    &:last-child{border-right: none;}
+  }
+}

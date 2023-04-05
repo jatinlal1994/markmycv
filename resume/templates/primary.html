@@ -1,0 +1,105 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Primary Resume</title>
+        <link href="https://fonts.googleapis.com/css?family=Barlow:500,600|Poppins:400,500,600|Hind+Madurai:600&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://api.markmycv.com/css/primary.css">
+    </head>
+    <body>
+        <div class="page">
+            <div id="top-section" class="clear">
+              <div class="left">
+                <p id="name">{{ data.fullname }}</p>
+                <p id="position">{{ data.position }}</p>
+              </div>
+              <div class="right">
+                <div class="info"><p><span><i class="fas fa-map-marker-alt"></i> <b>Location</b></span> {{ data.location }}</p></div>
+                <div class="info"><p><span><i class="fas fa-envelope"></i> <b>Email ID</b></span> {{ data.emailid }}</p></div>
+                <div class="info"><p><span><i class="fas fa-phone"></i> <b>Phone</b></span> {{ data.phone }}</p></div>
+              </div>
+            </div>
+            <div class="divider"></div>
+            <div id="details-section" class="clear">
+              <div id="social-links">
+                <ul>
+                  {% if data.github %}<li><p><i class="fab fa-github-square"></i><span>Github URL : </span> {{ data.github }}</p></li>{% endif %}
+                  {% if data.twitter %}<li><p><i class="fab fa-twitter-square"></i><span>Twitter URL : </span> {{ data.twitter }}</p></li>{% endif %}
+                  {% if data.facebook %}<li><p><i class="fab fa-facebook-square"></i><span>Facebook URL : </span> {{ data.facebook }}</p></li>{% endif %}
+                  {% if data.reddit %}<li><p><i class="fab fa-reddit-square"></i><span>Reddit URL : </span> {{ data.reddit }}</p></li>{% endif %}
+                  {% if data.linkedin %}<li><p><i class="fab fa-linkedin"></i><span>Linkedin URL : </span> {{ data.linkedin }}</p></li>{% endif %}
+                  {% if data.behance %}<li><p><i class="fab fa-behance-square"></i><span>Behance URL : </span> {{ data.behance }}</p></li>{% endif %}
+                  {% if data.youtube %}<li><p><i class="fab fa-youtube"></i><span>YouTube URL : </span> {{ data.youtube }}</p></li>{% endif %}
+                </ul>
+              </div>
+              <div id="details-box"><p><i class="fas fa-quote-left"></i> {{ data.summary }} <i class="fas fa-quote-right"></i></p></div>
+            </div>
+            <div id="skills-section">
+              <div class="section-title"><p>Technical skills</p></div>
+              <ul>
+                {% for skill in data.skills %}
+                <li>
+                  <div class="skill-title"><p>{{ skill.type }}</p></div>
+                  <div class="skill-content"><p>{{ skill.description }}</p></div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="divider not-first"></div>
+            <div id="languages-section" class="clear">
+            <div id="profile-pic" :style="profilepicture" style="background-image: url('http://localhost:8000/api/image/{{ data.hashcode }}')"></div>
+              <div id="professional">
+                <div class="section-title"><p>Career Objective</p></div>
+                <div class="professional-string"><p>{{ data.objective }}</p></div>
+                <div class="professional-sub-title"><p>Core Skills</p></div>
+                <div class="professional-sub-content"><p>{{ data.core_skills }}</p></div>
+                <div class="skill-images">
+                  <div class="clear">
+                    {% for skill in data.skillscore %}
+                    <div class="skill-col">
+                      <div class="skill">
+                        <p class="skill-name">{{ skill.name }} <span><b v-if="skillpercent">{{ skill.score }}</b></span></p>
+                        <div class="skill-bar"><div class="skill-fill" style="width: {{ skill.score }}"></div></div>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="divider not-first"></div>
+            <div id="career-section" class="clear">
+              <div class="section-title">
+                <p>Career Timeline</p>
+              </div>
+              {% for step in data.timeline %}
+              <div class="career-step">
+                <p class="career-title">{{ step.position }} - {{ step.organisation_name }} <span><b>( {{ step.from }} - {{ step.to }} )</b></span></p>
+                <ul>
+                  {% for achievement in step.achievements %}
+                  <li>{{ achievement.data }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="divider not-first"></div>
+            <div id="education-section">
+              <div class="section-title">
+                <p>Education</p>
+              </div>
+              <div id="education-row" class="clear">
+                {% for education in data.educations %}
+                <div class="education-col" v-for="(education, count) in educations" :key="count">
+                  <p class="course-name"><b>{{ education.course_name }}</b></p>
+                  <p class="course-institute"><b>{{ education.institute }}</b></p>
+                  <p class="course-year">{{ education.from }} - {{ education.to }}</p>
+                  <p class="course-marks">{{ education.score }}</p>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+      </body>
+</html>
